@@ -1,0 +1,245 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+    background-color:#f2f2f2;
+}
+
+.container{
+    background-color:white;
+    margin-top:10vh;
+    padding-bottom:15vh;
+
+}
+
+.header-cart{
+     margin-top:5vh;
+     text-align:center;
+     border-bottom:1px solid black;
+     padding-bottom:0.5em;
+}
+
+.header{
+    letter-spacing:3px;
+    background-image: linear-gradient(90deg, #fe4a49,#fe3434);
+    background-size: 100%;
+    background-clip: text;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+@media(max-width:600px){
+    .header{
+        padding-top:5vh;
+    }
+}
+
+
+.show{
+    position:absolute;
+    right:0;
+    left:0;
+    margin-top:25vh;
+    width:100vw;
+    background-color:white;
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    z-index:2;
+    font-family:"Roboto";
+    text-align:center;
+    color:white !important;
+}
+
+.header-div{
+    float:left;
+}
+
+.header-div-2{
+    float:left;
+    padding-top:3vh;
+    text-align:right;
+}
+
+.back{
+     color:black;
+     letter-spacing:1px;
+     font-size:1.3em;
+}
+
+.back:hover{
+    color:black;
+    font-size:1.02em;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+li {
+    list-style:none;
+}
+
+.img-fluid{
+    height:25vh;
+    width:90%;
+}
+
+.p-cart-desc{
+    float:left;
+    padding-left:0;
+    padding-right:0;
+    text-align:right;
+    border-left:1px solid #d9d9d9;
+    padding-left:5vw;
+}
+
+@media(max-width:600px){
+    .p-cart-desc{
+        padding-left:0;
+    }
+}
+
+.product-image{
+    float:left;
+    padding-left:0;
+    padding-bottom:5%;
+    margin-right:5vw;
+}
+
+@media(max-width:600px) {
+    .product-image{
+        margin-right:0;
+        padding-right:0;
+    }
+}
+
+.product-title{
+    font-size:1.5em;
+}
+
+@media(max-width:600px){
+    .product-title{
+        width:100vw;
+        display:inline-block;
+        text-align:center;
+        padding:3vh 0;
+    }
+}
+
+.cart-container{
+    float:left;
+    margin-right:3vw;   
+    margin-bottom:10vh;
+}
+
+@media(max-width:600px){
+    .cart{
+        position:absolute;
+        display:flex;
+        right:27%;
+    }
+}
+
+.cart{
+    border:none;
+    background:linear-gradient(#fe4a49,#fe3434);
+    color:white;
+    text-shadow:1px 1px 1px black;
+    font-size:1.1em;
+    padding:0.5em;
+    letter-spacing:1px;
+    border-radius:5%;
+}
+
+.order-container{
+    float:left;
+}
+
+
+@media(max-width:600px) {
+    .go-back{
+        padding-top:2em;
+        padding-left:0;
+        padding-right:0;
+    }
+}
+
+
+
+.order{
+    border:none;
+    background:linear-gradient(#fe4a49,#fe3434);
+    color:white;
+    text-shadow:1px 1px 1px black;
+    font-size:1.1em;
+    padding:0.5em;
+    letter-spacing:1px;
+    border-radius:5%;
+}
+
+.no-products{
+    letter-spacing:2px;
+}
+
+.product-container{
+    margin-top:5vh;
+    border-bottom:1px solid #b3b3b3;
+}
+
+.p-quantity{
+    padding-top:1vh;
+    margin-bottom:7vh;
+}
+
+.no-products-div{
+    min-height:100vh;
+    padding-top:15vh;
+}
+
+.row{
+    text-align:center;
+}
+
+.backnd{
+    padding-top:10vh;
+    border-bottom:1px solid black;
+    background-image: linear-gradient(90deg, #fe4a49,#fe3434);
+    background-size: 100%;
+    background-clip: text;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.collapsing{
+    position:absolute;
+    right:0;
+    left:0;
+    margin-top:25vh;
+    width:100vw;
+    background:rgba(255,255,255,0.15);
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    z-index:2;
+    font-family:"Roboto";
+    text-align:center;
+    color:white !important;
+}
+
+.add-to-cart{
+     width:100%;
+     text-align:center;
+     margin-top:10%;
+     font-size:1.4em;
+     letter-spacing:2px;
+     padding:2vh 0;
+}
+
+@media(max-width:600px){
+    .add-to-cart{
+        border:1px solid #d9d9d9;
+    }
+}

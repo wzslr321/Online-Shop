@@ -1,0 +1,80 @@
+<%- include ("../includes/head.ejs") %> 
+
+<%- include ("../includes/navbar-login.ejs") %>
+
+     <link rel = "stylesheet" href = "/stylesheets/login.css">
+     <link rel = "stylesheet" href = "/stylesheets/messages.css">
+     <link rel = "stylesheet" href = "/stylesheets/navbar.css">
+     <link rel = "stylesheet" href = "/stylesheets/footer.css">
+     <link rel = "stylesheet" href = "/stylesheets/footer-login.css">
+
+</head>
+
+<body>
+    <main>
+
+         <div class = "login-signup-h1">
+
+             <h1>Zajerejstruj się </h1>
+
+         </div>
+
+         <div class = "login-container">
+
+             <form id = "form" action = "/rejerstracja" method = "POST">
+
+                 <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                 <label class = "login-label"> Uzupełnij poniższe pola </label>
+
+                 <input  placeholder = "Imię"     class = "login-input" type = "text" name = "firstName">
+                 <input  placeholder = "Nazwisko" class = "login-input" type = "text" name = "secondName">
+                        
+
+                 <input  placeholder = " E-mail " class = " login-input login-email " type = "text" name = "email" 
+                         id = "email" onkeyup = " emailValidation();emailValidation.email()" value = "<%= typeof email != 'undefined' ? email :"" %>">
+
+                 <input  placeholder = " Hasło (min. 8 znaków)" class = " login-input" type = "password" name = "password" 
+                         id = "password" onkeyup = " passwordValidation();passwordValidation.passwordLength()" >
+
+                 <input placeholder = "Potwierdź hasło" class = "login-input" type = "password" name = "confirmPassword"
+                         id = "confirmPassword" onkeyup = " passwordValidation(); passwordValidation.passwordEqual() ">
+                          
+
+<%- include("../partials/messages.ejs") %> 
+
+                 <div class = "login-buttons-container">
+                     <button class = "submit-register" type = "submit">Zajerejstruj się!</button>
+                 </div>
+
+             </form>
+
+         </div>
+
+         <div class = "login-text-container">
+             <span class = "login-text">Dlaczego warto założyć konto?</span>
+
+             <ul>
+
+                 <li> - Możliwość bezpośredniego kupna produktów </li>
+                 <li> - Szybki podgląd produktów w koszyku       </li>
+                 <li> - Podgląd zamówienia                       </li>
+                 
+             </ul>
+
+             <a class = "register-href" href = "/logowanie"> Masz już konto? Zaloguj się ! </a>
+
+         </div>   
+
+     </main>
+
+
+     
+<script type = "text/javascript" src="scripts/validation-email.js"></script>
+<script type = "text/javascript" src="scripts/validation-password.js"></script>
+
+
+<%- include("../includes/footer") %>
+
+
+

@@ -1,0 +1,43 @@
+
+<% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error) { %>
+
+        <div class = "error-contaner"> 
+
+               <span class = "error-text"> <%= error.message %></span>
+
+        </div>
+  
+<% }); %> <% } %> <% if(success_message != ''){ %>
+
+       <%= success_message %>
+
+<% } %> <% if(error_message != ''){ %>
+
+        <div class = "error-container"> 
+
+               <span class = "error-message"> <%= error_message %></span>
+
+        </div>
+  
+     
+<% } %> <% if(error != "") { %>
+
+       <% if(error == "Missing credentials") { %>
+
+               <div class = "error-container"> 
+
+                      <span class = "error-message">Uzupełnij wszystkie pola !</span>
+
+               </div>
+          
+       <% } else { %>
+
+               <div class = "error-container"> 
+
+                      <span class = "error-message"><%= error %></span>
+
+               </div>
+
+       <%  } %>
+   
+<% } %>

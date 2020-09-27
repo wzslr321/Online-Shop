@@ -1,0 +1,80 @@
+<%- include ("../includes/head.ejs") %> 
+
+<%- include ("../includes/navbar-login.ejs") %>
+
+     <link rel = "stylesheet" href = "/stylesheets/login.css">
+     <link rel = "stylesheet" href = "/stylesheets/messages.css">
+     <link rel = "stylesheet" href = "/stylesheets/navbar.css">
+     <link rel = "stylesheet" href = "/stylesheets/footer.css">
+     <link rel = "stylesheet" href = "/stylesheets/footer-login.css">
+
+</head>
+
+<body>
+     <main>
+
+         <div class = "login-signup-h1">
+
+             <h1>Zajerejstruj się </h1>
+
+         </div>
+
+         <div class = "login-container">
+         
+             <form action = "/logowanie" method = "POST">
+                
+                 <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                 <label class = "login-label"> Posiadasz konto? Zaloguj się !</label>
+
+                
+                 <input placeholder = " E-mail " class = " login-input login-email " type = "text" 
+                        name = "email" id = "email" onkeyup = "emailValidation();emailValidation.email()">
+
+                 <input placeholder = " Hasło" class = " login-input" type = "password" name = "password" id="password">
+
+
+<%- include("../partials/messages.ejs") %>
+
+                 <% if( message !== ""){ %>
+
+                     <div class = "error-container"> 
+
+                         <span class = "error-message"> <%= message %></span>
+
+                      </div>
+
+                 <% } %>
+            
+                 <div class = "login-buttons-container">
+
+                         <a      class = "a-reset" href = "/reset"> <span class = "forget-password-text">Nie pamiętam hasła</span> </a>
+                         <button class = "submit-login" type = "submit">Zaloguj się!</button>
+
+                 </div>
+
+             </form>
+
+         </div>
+
+         <div class = "login-text-container">
+
+             <span class = "login-text">Dlaczego warto założyć konto?</span>
+
+             <ul>
+                 <li> - Możliwość bezpośredniego kupna produktów   </li>
+                 <li> - Szybki podgląd produktów w koszyku         </li>
+                 <li> - Podgląd zamówienia                         </li>
+             </ul>
+
+             <a class = "register-href" href = "/rejerstracja"> Załóż konto klikając tutaj!</a>
+
+         </div>
+
+
+        
+     </main>
+
+<script type = "text/javascript" src="scripts/validation-email.js"></script>
+
+<%- include("../includes/footer") %>

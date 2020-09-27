@@ -1,0 +1,134 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    margin-top:15vh;
+    margin-bottom:5vh;
+}
+
+@media(min-width:1200px){
+    .container{
+        max-width:80vw;
+    }
+}
+
+.product-desc-header{
+     border-bottom:1px solid black;
+     margin-bottom:3vh;
+     font-size:1.2em;
+}
+
+@media(min-width:992px){
+    .product-desc-header{
+        margin-top:4vh;
+   }
+}
+
+.col-lg-7{
+    border-left:1px solid black;
+    padding-left:5em;
+}
+
+.add-to-cart{
+    text-align:right;
+    margin-top:10vh;
+    margin-bottom:10vh;
+}
+
+.collapsing{
+    position:absolute;
+    right:0;
+    left:0;
+    margin-top:25vh;
+    width:100vw;
+    background:rgba(255,255,255,0.15);
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    z-index:2;
+    font-family:"Roboto";
+    text-align:center;
+    color:white !important;
+}
+
+.show{
+    position:absolute;
+    right:0;
+    margin-top:25vh;
+    width:100vw;
+    background-color:white;
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    z-index:2;
+    font-family:"Roboto";
+    text-align:center;
+    color:white !important;
+}
+
+.title{
+    font-size:1.5em;
+    margin-top:2em;
+}
+
+.title-container{
+    padding:1em 0;
+    letter-spacing:1px;
+}
+
+.cart{
+     border:none;
+     background:linear-gradient(#fe4a49,#fe3434);
+     color:white;
+     text-shadow:1px 1px 1px black;
+     font-size:1.1em;
+     padding:0.5em;
+     letter-spacing:1px;
+}
+
+.price-container{
+    margin-top:10%;
+    font-size:1.3em;
+    margin-bottom:10%;
+    letter-spacing:1px;
+}
+
+@media(min-width:1200px){
+    .img-fluid{
+        height:30vh;
+        width:27vw;
+    
+    }
+}
+
+
+@media(max-width:600px){
+    .img-fluid{
+        height:30vh;
+        width:80vw;
+    }
+}
+
+@media(min-width:600px){
+     @media(max-width:992px){
+        .img-fluid{
+            height:40vh;
+            width:70vw;
+        }
+     }
+}
+
+.image-container{
+    width:80vw;
+    margin:0 auto;
+}
+
+.col-12{
+    padding:0 2em;
+}
+
+.btn-order{
+    padding:1.5vh 1.5vw;
+    color:white;
+    background:linear-gradient(#fe4a49,#fe3434);
+    border:none;
+}

@@ -1,0 +1,66 @@
+<%- include('../includes/head.ejs') %>
+    
+     <link rel = "stylesheet" href = "/stylesheets/admin.css">
+     <link rel = "stylesheet" href = "/stylesheets/footer.css">
+
+
+ </head>
+ 
+
+ <body>
+
+    <%- include("../includes/navbar-admin.ejs") %>
+
+    <main >
+
+         <div class = "main">
+
+   
+         <% if (products.length > 0) { %>
+
+            <div class = "product-container">
+
+                <% for (let product of products) { %>
+
+                    <div class = "product">
+
+                         <span class  = "product-title p-desc"> <span class = "span-desc"> Nazwa produktu : </span> <%= product.title %></span>
+
+                         <img  class = "img-fluid" src = "/<%=product.imageUrl%>">
+
+                         <span class = "product-price p-desc"> <span class = "span-desc"> Cena produktu : </span><%= product.price%></span>
+                         <span class = "product-desc p-desc"><span class = "span-desc"> Opis produktu : </span><%= product.description %></span>
+                        
+                       
+
+                         <div class = "buttons">
+                            
+                            <a class= "edit-product" href="/admin/edytuj-produkt/<%= product._id %>?edit=true" >Edytuj produkt</a>
+                        
+                            <form action="/admin/usun-produkt" method="POST">
+                                <input type="hidden" value="<%= product._id %>" name="productId">
+                                <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+                                <button class = "del-button" type="submit">Usuń produkt</button>
+                            </form>
+                            
+                        </div>
+
+                    </div>
+
+                <% } %>
+
+            </div>
+
+            <% } else { %>
+
+                <h1>Nie znaleziono żadnych produktów.</h1>
+
+            <% } %>
+
+         </div>
+
+
+</main>
+
+<script type = "text/javascript" src = "/scripts/admin-panel.js"></script>
+<%- include("../includes/footer") %>

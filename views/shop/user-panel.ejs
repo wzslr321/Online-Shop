@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<%- include("../includes/head") %>
+
+     <link rel = "stylesheet" href = "/stylesheets/footer.css">
+     <link rel = "stylesheet" href = "/stylesheets/user-panel.css">
+
+</head>
+
+<body>
+
+<%- include("../includes/navbar") %>
+
+<div class = "container">
+     <div class = "row">
+         <div class = "col-10">
+             
+             <div class = "col-12 col-lg-8 col-user">
+
+                <% if(User._id.toString() === "5efcaef97848ce001701e3e5") {  %> 
+               
+                     <span class = "no-orders admin"><a href = "/admin/produkty"> Kliknij tutaj, żeby przejść do panelu admina! </a>  </span> 
+
+                 <% } else { %>
+
+                 <span class = "header">Twoje zamówienia</span>
+
+                 <div class = "no-orders">
+
+                     <% if(order.length < 1) { %>
+
+                          <span> Tutaj pojawią się twoje zamówienia! </span>
+
+                     <%  } %>
+                   
+                     <%  for(let i = 0; i < order.length; i++) {  %>
+
+                         <div class = "orders-container">
+
+                        <% if(order[i].products.length > 0 ){ %>
+
+                            
+                                <span class = "order-products"> <b> Numer zamówienia : </b> <%= order[i]._id %> </span>
+                                <a class = "order-products" href= "/zamowienia/<%= order[i]._id %>">Pełne potwierdzenie zamówienia - <%= order[i]._id %> </a>
+
+ 
+
+                        <% } %>
+
+                   
+                           
+
+                         </div>
+
+                     <% } %> 
+
+                
+                 </div>
+
+                 <%  } %>
+
+             </div>
+
+             <div class = "col-12 col-lg-4 col-user">
+                <% if(User._id.toString() === "5efcaef97848ce001701e3e5") {  %> 
+
+
+
+
+                <% } else { %>
+
+                 <span class = "header">Twoje dane</span>
+                 <ul> 
+
+                     <li> Imię     :  <b>  <%= firstName  %> </b>  </li>
+                     <li> Nazwisko :  <b>  <%= secondName %> </b>  </li>
+                     <li> E-mail   :  <b>  <%= email      %> </b>  </li>
+
+                     <% if(isAuthenticated.shippingCart.length > 0){ %>
+
+                         <% for(let i=0; i < User.shippingCart.length; i++ ) { %>
+
+                            <li> Kraj :                  <b>  <%= User.shippingCart[i].country     %> </b> </li>
+                            <li> Miasto :                <b>  <%= User.shippingCart[i].city        %> </b> </li>
+                            <li> Kod pocztowy :          <b>  <%= User.shippingCart[i].zipCode     %> </b> </li>
+                            <li> Ulica :                 <b>  <%= User.shippingCart[i].street      %> </b> </li>
+                            <li> Numer domu/mieszkania : <b>  <%= User.shippingCart[i].houseNumber %> </b> </li>
+
+                         <% } %>
+
+
+                     <% } %> 
+                     
+                 </ul>
+                <% } %>
+             </div>
+
+         </div>
+     </div>
+</div>
+
+
+
+<%- include("../includes/footer") %>
+
+</html>

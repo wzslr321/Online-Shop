@@ -1,0 +1,37 @@
+.error-container{
+    margin-bottom:2em;
+    text-align:right;
+    margin-top:0.5em;
+    width:75%;
+}
+
+@media(max-width:992px){
+    .error-container{
+        width:100%;
+        text-align:center;
+        margin-bottom:0.5em;
+        margin-top:0.85em;
+    }
+}
+
+.error-message{
+    font-size:1.1em;
+    background-image: linear-gradient(45deg, #fe4a49,#fe3434);
+    margin-left:7em;
+    background-size: 100%;
+    background-clip: text;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    padding-bottom:0.25em;
+    letter-spacing:1px;
+    border-bottom:1px solid #fe3434;
+}
+
+@media(max-width:992px){
+    .error-message{
+        margin-left:0;
+    }
+}

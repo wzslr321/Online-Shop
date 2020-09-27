@@ -1,0 +1,100 @@
+<%- include("../includes/head.ejs") %>
+
+     <link rel = "stylesheet" href = "/stylesheets/admin.css">
+     <link rel = "stylesheet" href = "/stylesheets/footer.css">
+
+
+</head>
+
+<%- include("../includes/navbar-admin.ejs") %>
+
+<body>
+
+<main >
+
+
+
+<div class = "edit-container"> 
+
+     <form  action="/admin/<% if (editing) { %>edytuj-produkt<% } else { %>dodaj-produkt<% } %>" method="POST" enctype="multipart/form-data" class = "admin-form">
+
+         <div>
+
+             <input placeholder = "Tytuł" type="text" name="title" id="title" value="<% if (editing) { %><%= product.title %><% } %>">
+
+         </div>
+
+         <div class = "select-container">
+
+         <select class = "category" name = "selectCategory">
+        
+            <% for(let i = 0; i < categorySelect.length; i++){ %>
+
+                <option value = "<%= categoryData[i] %>" > <%= categoryData[i] %></option>
+
+             <% } %>
+
+         </select>
+
+         </div>
+         <div>
+
+            <select class = "category" name = "subCategory">
+
+                <% for(let i = 0; i < subCategorySelect.length; i++){ %>
+
+                    <option value = "<%= subCategoryData[i] %>"> <%= subCategoryData[i] %></option>
+
+                 <% } %>
+                        
+
+
+            </select>
+
+            </div>
+
+         
+
+         <div>
+
+             <input placeholder = "Cena produktu" type="number" name="price" id="price" step="0.01" value="<% if (editing) { %><%= product.price %><% } %>">
+
+         </div>
+
+         <div>
+
+             <textarea placeholder = "Opis produktu"name="description" id="description"><% if (editing) { %><%= product.description %><% } %></textarea>
+
+         </div>
+
+         <div>
+
+            <textarea placeholder = "Dokładny opis produktu" name="descriptionExtended" id="descriptionExtended"><% if (editing) { %><%= product.descriptionExtended %><% } %></textarea>
+
+         </div>
+
+         <a class = "add-cat-text" href = "dodaj-kategorie">Kliknij tutaj, żeby dodać kategorię lub pod-kategorię!</a>
+   
+
+         <div class = "image-container">
+
+             <input type="file" name="image" id="image">
+             
+         </div>
+
+        <% if (editing) { %>
+
+             <input type="hidden" value="<%= product._id %>" name="productId">
+             
+        <% } %>
+        
+         <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+         <button class = "btn-add" type="submit"><% if (editing) { %>Zaaktualizuj produkt<% } else { %>Dodaj produkt<% } %></button>
+
+     </form>
+    </div>
+
+
+<script type = "text/javascript" src = "/scripts/admin-panel.js"></script>
+<%- include("../includes/footer") %>

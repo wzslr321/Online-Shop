@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<%- include("../includes/head") %>
+
+     <link rel = "stylesheet" href = "/stylesheets/add-category.css">
+     <LINK rel = "stylesheet" href = "/stylesheets/admin.css">
+     <LINK rel = "stylesheet" href = "/stylesheets/footer.css">
+
+
+</head>
+
+<body>
+
+    <%- include("../includes/navbar-admin.ejs") %>
+
+<div class = "container-category">
+    <div class = "row">
+        <div class = "col-12 col-lg-4 col-cat">
+
+            <span class = "cat-text"> 
+                Jeśli chcesz dodać kategorię lub pod-kategorię, wpisz jej nazwę poniżej.
+           </span>
+  
+             <label for = "category">Nazwa kategorii</label>
+
+             <form class = "add-category-form" method = "POST" action = "/admin/dodaj-kategorie">
+                 
+                 <input class = "cat-input" placeholder = "kategoria"    type = "text" name = "category">
+
+                 <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                 <button class = "btn" type = "submit">Zatwierdź!</button>
+
+             </form>
+
+             <label for = "subcategory">Nazwa pod-kategorii</label>
+
+             <form  class = "add-category-form" name = "subcategory" method = "POST" action = "/admin/dodaj-kategorie">
+                 
+                <input class = "cat-input" placeholder = "pod-kategoria" type = "text" name = "subCategory">
+
+                <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                <button class = "btn" type = "submit">Zatwierdź!</button>
+
+            </form>
+        </div>
+        <div class = "col-12 col-lg-4 col-cat">
+
+            <div>
+
+                <span class = "cat-text"> 
+                     Jeśli chcesz usunąć kategorię lub pod-kategorię, wpisz jej nazwę poniżej.
+                </span>
+       
+            </div>
+
+            <label for = "category">Nazwa kategorii</label>
+
+            <form class = "add-category-form" method = "POST" action = "/admin/usun-kategorie">
+                
+                <input class = "cat-input" placeholder = "kategoria"    type = "text" name = "category">
+
+                <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                <button class = "btn" type = "submit">Zatwierdź!</button>
+
+            </form>
+
+            <label class = "form-2" for = "subcategory">Nazwa pod-kategorii</label>
+
+            <form  class = "add-category-form fcontainer-2 " name = "subcategory" method = "POST" action = "/admin/usun-pod-kategorie">
+                
+               <input class = "cat-input" placeholder = "pod-kategoria" type = "text" name = "subCategory">
+
+               <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+               <button class = "btn" type = "submit">Zatwierdź!</button>
+
+           </form>
+        </div>
+
+        <a href = "/admin/dodaj-produkt"class = "cat-back">Kliknij tutaj aby wrócić do dodawania produktu.</a>
+
+    </div>
+</div>
+
+<%- include("../includes/footer") %>

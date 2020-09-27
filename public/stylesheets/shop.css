@@ -1,0 +1,255 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.shop-header{
+    position:absolute;
+    margin-top:10vh;
+    width:100%;
+    min-height:15vh;
+    background:rgba(255,255,255,0.15);
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    z-index:2;
+    padding-top:1.5%;
+    font-family:"Roboto";
+    text-align:center;
+}
+
+.shop-header-text{
+    color:white;
+    text-shadow:3px 3px 3px black;
+    font-size:2.5em;
+}
+
+
+
+a:active{
+    text-decoration:none;
+}
+
+.show{
+    position:absolute;
+    right:0;
+    margin-top:25vh;
+    width:100vw;
+    background:rgba(255,255,255,0.15);
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    z-index:2;
+    font-family:"Roboto";
+    text-align:center;
+    color:white !important;
+}
+
+.container{
+    padding-top:5em;
+    text-align:center;
+    background-color:white;
+    padding-bottom:5em;
+    margin-top:10vh;
+}
+
+
+.collapsing{
+    position:absolute;
+    margin-top:20vh;
+    width:100%;
+    background:rgba(255,255,255,0.15);
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    z-index:2;
+    font-family:"Roboto";
+    text-align:center;
+}
+
+
+
+.product-div{
+    margin-bottom:15vh;
+}
+
+.product-price{
+    border-top:1px solid  #d7d7c1;
+    padding-top:2vh;
+    text-align:left;
+    margin-bottom:1em;
+}
+
+.product-title-div{
+    text-align:left;
+    height:5vh;
+}
+
+.product-description{
+    border:1px solid #d7d7c1;
+    text-align:left;
+    padding:1em;
+    height:30vh;
+}
+
+.go-details{
+    line-height:250%;
+    display:block;
+    text-align:right;
+    color:#ff4000;
+}
+
+.go-details:hover{
+    color:red;
+    font-size:1.02em;
+    text-decoration:none;
+}
+
+.log-to-cart:first-of-type{
+    padding-bottom:1vh;
+}
+
+.log-to-cart{
+    display:block;
+    text-align:right !important;
+    color:#e20505
+}
+
+.log-to-cart:hover{
+     text-decoration:none !important;
+     font-size:1.015em;
+}
+
+.cart-div{
+     text-align:right;
+}
+
+.add-to-cart{
+    border:none;
+    background-color:white;
+    color:#e20505
+}
+
+button .fa-shopping-cart{
+    font-size:1em;
+    color:black;
+}
+
+.shop-image{
+    height:30vh;
+}
+
+@media(max-width:992px){
+
+     .shop-image{
+        width:60vw;
+        height:40vh;
+     }
+}
+
+@media(max-width:600px){
+
+    .shop-image{
+       width:85vw;
+       height:30vh;
+    }
+}
+
+.product__title{
+    margin-top:1em;
+}
+
+.test{
+    position:absolute;
+    right:10%;
+    bottom:2%;
+    text-align:right;
+}
+
+.categories-navbar{
+    text-align:center !important;    
+    margin-top:12vh;
+    padding:1vh 0;
+    margin-bottom:5vh;
+    width:20vw;
+    float:left;
+    margin-left:0;
+    margin-right:0;
+    border-right:1px solid #d9d9d9;
+    border-bottom:none !important;
+}   
+
+@media(max-width:1200px) {
+   .categories-navbar{
+       margin-top:10vh;
+       width:100vw;
+   }
+}
+@media(max-width:992px) {
+    .categories-navbar{
+         border-bottom:1px solid #d9d9d9 !important;
+         padding-bottom:5vh;
+    }
+ }
+ 
+
+
+
+.navbar-categories-span{
+
+    font-size:1.15em;
+    padding:2vh 1vw;
+    font-family: 'Roboto', sans-serif ;
+    font-weight:300;
+
+}
+
+.navbar-categories-header{
+    font-size:1.15em;
+    padding:2vh 1vw;
+    letter-spacing:1px;
+    color:#2196f3;
+}
+
+@media(max-width:992px){
+    .navbar-categories-header{
+         width:100%;
+         display:block;
+         border-bottom:1px solid #d9d9d9;
+         margin-bottom:4vh;
+    }
+}
+
+.categories-href:first-of-type{
+
+    padding-top:2vh;
+
+
+}
+
+@media(max-width:992px){
+    .categories-href:first-of-type{
+         padding-top:1.5vh;
+         padding-bottom:0;
+    }
+}
+
+.categories-href{
+    color:black !important;
+    display:block;
+    text-align:left;
+    padding-top:1.5vh;
+    list-style-type:none;
+    padding-left:1vw;
+}
+
+@media(max-width:992px){
+    .categories-href{
+         width:50%;
+         float:left;
+         display:block;
+         text-align:center;
+    }
+}
+
+.categories-href:hover{
+   
+   color:black;
+   font-size:1.05em;
+   text-decoration:none !important;
+}

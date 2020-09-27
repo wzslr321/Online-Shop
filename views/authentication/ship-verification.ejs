@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<%- include("../includes/head") %>
+
+     <link rel = "stylesheet" href = "/stylesheets/footer.css">
+     <link rel = "stylesheet" href = "/stylesheets/user-panel.css">
+
+</head>
+
+<body>
+
+<%- include("../includes/navbar") %>
+
+<div class = "container">
+     <div class = "row">
+         <div class = "col-10">
+             
+             <div class = "col-12 col-user">
+
+                 <% if(noAuth === true) { %>
+
+                     <span class = "ship-header"><i> Przy zakupie bez logowania istnieje tylko możliwość kupna za pobraniem. </i></span>
+
+                     <span class = "ship-product" name = "prodTitle"> Nazwa produktu : <b>  <%= products.title %> </b>
+                     <span class = "ship-product" name = "prodTitle"> Cena produktu  : <b> <%= products.price %> zł</b>
+
+                 <% } %>
+                 
+                 <span class = "header">Uzupełnij swoje dane</span>
+ 
+                 <%- include("../partials/messages.ejs") %>
+
+                 <% if(noAuth === true) { %>
+
+                     <form action = "/zamowienie-pobranie" method = "POST"> 
+                        <input type="hidden" name="productId" value="<%= products._id %>">
+                        <input  class = "login-input" type = "text" placeholder = "e-mail" name = "noAuthEmailInput">
+
+                 <% } else {  %> 
+            
+                     <form action = "/weryfikacja-wysylka" method  = "POST" >
+
+                 <% } %>       
+ 
+                     <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                     <input placeholder = "Imię" class =  "login-input" type = "text" name = "name" <% if(noAuth !== true) { %> value = "<%= name %>" <% } %>>
+
+                     <input placeholder = "Nazwisko" class = "login-input" type = "text" name = "ndName" <% if(noAuth !== true) { %> value = "<%= ndName %>" <% } %> >
+               
+                     <%- include("../includes/select-country") %>   
+                
+                     <input placeholder = "Miasto" class = " login-input" type = "text" name = "city" >
+                 
+                     <input placeholder = "Kod pocztowy"  pattern="\d{2,5}(-\d{3,4})?" class = " login-input" type = "text" name = "zipCode">
+                
+                     <input placeholder = "Ulica"  class = " login-input" type = "text" name = "street" >
+
+                     <input placeholder = "Numer domu"  class = " login-input" type = "text" name = "houseNumber">
+
+                     <% if(noAuth === true) { %> 
+                             <label  class = "payment-methods-label" for = "paymentMethods">Sposób płatności - bez logowania istnieje tylko możliwość zakupu za pobraniem.</label>
+                             <select name = "paymentMethods"  class = "payment-methods">
+                                 <option value = "Za pobraniem DPD">Za pobraniem DPD - 10 zł </option>
+                                 <option value = "Za pobraniem">Za pobraniem UPS (x) zł </option>
+                                 <option value = "Za pobraniem">Za pobraniem ...(x) zł </option>
+                                 <option value = "Za pobraniem">Za pobraniem (x) zł </option>
+                             </select>
+                     <% } else { %>
+                        <label  class = "payment-methods-label" for = "paymentMethods">Sposób płatności </label>
+                        <select name = "paymentMethods"  class = "payment-methods">
+                            <option value = "Za Pobraniem DPD">Za pobraniem DPD 10 zł </option>
+                            <option value = "przelew"> Przelew z góry - 8zł</option>
+                            <option value = "Za pobraniem">Za pobraniem UPS (x) zł </option>
+                            <option value = "Za pobraniem">Za pobraniem ...(x) zł </option>
+                            <option value = "Za pobraniem">Za pobraniem (x) zł </option>
+                        </select>
+                     <% } %> 
+
+                     <% if(errors !== undefined) {  %>
+
+                         <div class = "errors"><%= errors %> </div>
+
+                     <% } %> 
+                   
+                    
+                     <div class = "submit-container">
+                        <button type = "submit" class = "submit"> Zatwierdź!</button>
+                     </div>
+
+                 </form>
+
+
+             </div>
+
+         </div>
+     </div>
+</div>
+
+
+
+<%- include("../includes/footer") %>
+
+</html>

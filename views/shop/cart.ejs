@@ -1,0 +1,104 @@
+<%- include('../includes/head.ejs') %>
+
+     <link rel="stylesheet" href="/stylesheets/cart.css">
+     <link rel="stylesheet" href="/stylesheets/navbar.css">
+     <link rel = "stylesheet" href = "/stylesheets/footer.css">
+
+</head>
+
+<%- include("../includes/navbar.ejs") %>
+
+<body>
+     <main>
+
+         <% if (products.length > 0) { %>
+
+             <div class = "container">
+                 <div class ="row">
+                     <div class = "col-lg-12 header-cart">
+
+                         <div class = "col-12 col-lg-6 header-div">
+
+                            <h1 class = "header"> Twój koszyk! </h1>
+
+                         </div>
+
+                         <div class = "go-back col-12 col-lg-6 header-div-2">
+
+                            <a  class = "back" href = "/sklep"><span>Kliknij tutaj aby wrócić do sklepu!</span> </a>
+
+                         </div>
+                       
+                     </div> 
+                   
+                         <% products.forEach(p => { %>
+
+                             <div class = "col-lg-12 product-container">
+
+                                 <div class = " col-lg-5 product-image">
+
+                                    <img class = "img-fluid" src="/<%= p.productId.imageUrl %>" alt="<%= p.title %>">
+
+                                 </div>
+
+                                 <div class = " col-lg-5 p-cart-desc">
+
+                                     <span class = "product-title">    <%= p.productId.title               %>      </span>
+                                     <h4>Cena :                      <%= p.productId.price * p.quantity %> zł    </h4>
+                                     <h4 class = "p-quantity">Ilość: <%= p.quantity                      %>      </h2>
+           
+                                     <form action="/koszyk/usun-produkt" method="POST">
+
+                                         <input type="hidden" value="<%= p.productId._id %>" name="productId">
+                                         <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                                         <div class = "cart-container">
+
+                                            <button type="submit" class = "cart" >Usuń z koszyka</button>
+
+                                         </div>
+
+                                     </form>
+                            
+                              
+                               
+                                </div>
+
+                    </div>
+           
+       
+                    <% }) %>
+
+                     <div class = "add-to-cart">
+
+                         <a href = "weryfikacja-wysylka">Zamów teraz!</a>
+                         
+                     </div>
+
+                        <% } else { %>
+
+                             <div class = "container">
+                                 <div class = "row">
+                                     <div class="no-products-div col-lg-12 ">
+                                      
+                                         <h1 class = "no-products">Brak przedmiotów w koszyku!</h1>
+            
+                                        <div class ="backnd ">
+
+                                            <a class = "back " href = "/sklep"><h1>Kliknij tutaj aby wrócić do sklepu!</h1> </a> 
+                                            
+                                        </div>
+                                                
+                                     </div>
+                                 </div>
+                             </div>
+                          
+                        <% } %>    
+
+                   
+                </div>
+            </div>             
+        
+     </main>
+
+<%- include("../includes/footer") %>

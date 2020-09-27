@@ -1,0 +1,44 @@
+<%- include ("../includes/head.ejs") %> 
+
+<%- include ("../includes/navbar-login.ejs") %>
+
+     <link rel = "stylesheet" href = "/stylesheets/reset.css">
+     <link rel = "stylesheet" href = "/stylesheets/navbar.css">
+     <link rel = "stylesheet" href = "/stylesheets/messages.css">
+
+</head>
+
+<body>
+
+     <main>
+
+           <div class = "reset-container">
+
+                <span> Zresetuj swoje hasło!</span>
+
+           </div>
+        
+
+           <div class = "reset-text"> 
+
+                <span>
+                     Wprowadź e-mail konta, którego hasło chcesz zresetować, a my 
+                     wyślemy tam link weryfikacyjny.
+                </span>
+
+<%- include("../partials/messages.ejs") %> 
+
+           </div>
+
+           <form action = "/reset" method = "POST">
+
+                <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+                <input placeholder = "Email konta"type = "text" name = "email" id="email">
+
+                <button type = "submit">Potwierdź</button>
+
+           </form>
+        
+     </main>
+
+<%- include("../includes/footer-login.ejs") %>

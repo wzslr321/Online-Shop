@@ -1,0 +1,58 @@
+<nav class=" fixed-top navbar navbar-expand-xl navbar-light bg-light">
+
+     <a class="navbar-brand" href="/">
+         <i class="fas fa-couch logo"> </i>
+         <span class = "logo-text">Strona główna</span>
+     </a>
+
+     <button id ="nav-button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick = " isExpanded();isExpanded.button()" >
+         <span class="navbar-toggler-icon"></span>
+     </button>
+  
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         
+         
+
+         <div class = "search-div"> 
+             <form action = "/sklep" method = "GET" class = "form-inline my-2 my-lg-0">
+                 <input class = "search-input" type="text" name = "search" placeholder = "Szukaj produktu..." >    
+             </form>
+         </div> 
+
+         <ul class="navbar-nav mr-auto">
+
+
+            <% if(isAuthenticated) { %>
+                
+                 <li class="nav-item active" >
+                     <a class = "nav-link" href = "/koszyk"><span class = "cart-nav">Koszyk</span></a>
+                 </li>
+
+                 <li class = "nav-item active account">
+                     <a href = "/konto">  <i class="far fa-user cart-nav nav-link"></i> </a>
+                 </li>
+
+                 <li class="nav-item active login">
+                     <a class="nav-link " href="/wyloguj">Wyloguj się<span class="sr-only">(current)</span></a>
+                 </li>
+
+            <% } else { %>
+
+                 <li class="nav-item active login">
+                     <a class="nav-link" href="/logowanie">Zaloguj się<span class="sr-only">(current)</span></a>
+                 </li>
+
+            <% } %>
+
+
+        </ul>
+
+     </div>
+      
+       
+          
+
+</nav>
+
+
+

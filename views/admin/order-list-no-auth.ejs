@@ -1,0 +1,78 @@
+<%- include("../includes/head.ejs") %>
+
+     <link rel = "stylesheet" href = "/stylesheets/admin.css">
+
+</head>
+
+<%- include("../includes/navbar-admin.ejs") %>
+
+<div class = "orders-container">
+
+     <% if(userNoAuth.length !== 0) { %>
+    
+
+             <div class = "order-container"> 
+
+                 <% for(let i = 0; i < orderNoAuth.length; i++) { %>
+
+
+                     <div class = "order-id-container"> 
+                         <span class = "order-id"> Numer zamówienia : <%= orderNoAuth[i]._id %> </span>
+                     </div>
+
+                     <div class = "order-info-container"> 
+
+                                     <span class = "order-info"> Nazwa zamówionego produktu  : <b>  <%= productsNoAuth.title  %>  </b> </span>
+                                     <span class = "order-info"> Cena  zamówionego produktu  : <b>  <%= productsNoAuth.price  %>  </b> </span>
+                                     <span class = "order-info"> Ilość zamówionych produktów : <b>  1  </b> </span>
+
+
+                                <span class = "order-info"> Kraj :                  <b>  <%= userNoAuth[i].country     %> </b> </span>
+                                <span class = "order-info"> Miasto :                <b>  <%= userNoAuth[i].city        %> </b> </span>
+                                <span class = "order-info"> Kod pocztowy :          <b>  <%= userNoAuth[i].zipCode     %> </b> </span>
+                                <span class = "order-info"> Ulica :                 <b>  <%= userNoAuth[i].street      %> </b> </span>
+                                <span class = "order-info"> Numer domu/mieszkania : <b>  <%= userNoAuth[i].houseNumber %> </b> </span>
+   
+                            </div>
+    
+                            <% if(orderNoAuth[i].isRealised === false) { %>
+
+                                <form action = "/admin/zamowienia" method = "POST">
+            
+                                    <select name = "checkbox">
+                                        <option value = "Zrealizowane">Zrealizowane</option>
+                                    </select>
+            
+                                 <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+                                 <input name = "orderId" type = "hidden" value = "<%= orderNoAuth[i]._id %>">
+                                 <input name = "orderNoAuth" type = "hidden" value ="true">
+                                    
+                                    <button type = "submit">Zatwierdź</button>
+                                </form>
+            
+                             <% } else { %>
+            
+                                 <span>Zamówienie zajerejstrowane</span> 
+            
+                             <% } %>
+                         
+                 <% } %>
+
+
+                  
+
+
+             </div>
+   
+
+
+     <% } else {  %> 
+
+         <h1>Brak zamówień</h1>
+
+     <% } %>
+
+</div>
+
+
+

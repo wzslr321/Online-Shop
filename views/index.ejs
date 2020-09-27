@@ -1,0 +1,52 @@
+
+
+<%- include("./includes/head.ejs") %>
+
+     <link rel = "stylesheet"    href = "stylesheets/index.css">
+     <link rel = "stylesheet"    href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+     <link rel = "stylesheet"    href = "/stylesheets/navbar.css">
+     <Link rel = "stylesheet"    href = "/stylesheets/footer.css">
+
+</head>
+
+<body>
+
+
+<%- include("./includes/navbar") %>
+
+      <div class = "index-header-container">        
+           <span class = "index-header-text">Sklep (...) Lorem ipsum dolor sit, Temporibus, id?</span> 
+           <span class = "index-header-text-2">Jakiś krótki tekst o sklepie (....) Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus, id?Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque fugit dolor quia vel repellendus ullam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi illum architecto corporis labore earum natus, sint ratione ea blanditiis voluptate?Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum facere tenetur nulla vero iste ducimus.</span>
+      </div>
+      
+      <div class = "categories-navbar">
+
+           <span class = "navbar-categories-header">Kategorie produktów : </span>
+     
+          <% for(let i = 0; i < categories.length; i++) { %>
+       
+                <a class = "categories-href" href = "sklep/kategorie/<%= categories[i].name %>"> <li class = "navbar-categories-span"> <%= categories[i].name %> </li>  </a>
+
+          <%  } %>  
+
+      </div>   
+
+      <div class = "buttonsContainer">
+           <div class = "Button">
+
+                <a class = "buttons" href = "/sklep">
+                               
+                   <span></span>
+                   <span></span>    
+                   <span></span>
+                   <span></span>
+
+                   <span class = "stButton-text">Nasze produkty !</span>
+              
+                </a>
+           </div>
+      </div>
+      
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+
+<%- include("./includes/footer") %>

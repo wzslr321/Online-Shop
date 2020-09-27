@@ -1,0 +1,68 @@
+
+<%- include('../includes/head.ejs') %>
+
+      <link rel = "stylesheet" href = "/stylesheets/payment.css">
+      <link rel = "stylesheet" href = "/stylesheets/footer.css">
+
+</head>
+
+<%- include("../includes/navbar.ejs") %>
+
+<body>
+     <main>
+
+           <div class = "container">
+                <div class = "row"> 
+    
+
+           <% products.forEach(p => { %>
+                <div class = "col-lg-12 product-container">
+
+                     <div class = " col-lg-6 product-image">
+ 
+                          <img class = "img-fluid" src="/<%= p.productId.imageUrl %>" alt="<%= p.title %>">
+
+                     </div>
+
+                     <div class = " col-lg-6 p-cart-desc">
+
+                          <span class = "product-title">     Nazwa produktu: <%= p.productId.title              %>    </span>
+                          <span class = "p-price"> Ilość : <%= p.quantity                     %>    </span> 
+                          <span class = "p-price"> Cena :                      <%=  totalPrice%> zł </span>
+                        
+                     </div>
+                </div>
+       <% }) %>
+        
+     </div>
+</div>
+
+
+      <div class = "total-price-container">
+
+            <span>Łącznie : <%= totalPrice %> zł </span>
+
+      </div>
+
+      <div  class = "order-container">
+           <button id = "order-btn">Zamów teraz!</button>
+
+           <script src = "https://js.stripe.com/v3/"></script>
+           <script>
+
+                const  stripe   = Stripe("pk_test_51GswerA4skDlzpwzJKRKeORlRb2JMjp2apeKa7NUdkUs6IlLJ9BrquOfvIlUC572WMYPLHX54Vu2MuMmfNzOE7Vj00IaxjxCHC"),
+                       orderBtn = document.getElementById("order-btn");
+
+                     orderBtn.addEventListener("click", () => {
+                          stripe.redirectToCheckout({
+                               sessionId:"<%= sessionId %>"
+                      });
+                 });
+
+           </script>
+           
+       </div>
+
+     </main>
+
+<%- include("../includes/footer") %>

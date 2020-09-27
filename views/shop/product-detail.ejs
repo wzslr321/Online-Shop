@@ -1,0 +1,97 @@
+w<%- include('../includes/head.ejs') %>
+
+      <link rel = "stylesheet" href = "/stylesheets/product-detail.css">
+      <link rel = "stylesheet" href = "/stylesheets/navbar.css">
+      <link rel = "stylesheet" href = "/stylesheets/footer.css">
+
+</head>
+
+<%- include("../includes/navbar.ejs") %>
+
+<body>
+     <main>
+
+         <div class = "container">
+             <div class = "row"> 
+                 <div class = "col-lg-5">
+
+                     <div class = "title-container"> 
+                         <span class = "title" ><%= product.title %> </span>
+                     </div>
+                     
+                     <div class = "image-container">
+
+                        <img class = "img-fluid" src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+
+                     </div>
+                     
+
+                     <div class = "price-container"> 
+                         <span class = "price"><u> Cena:<%= product.price %> ,- </u></span>
+                     </div>
+
+                 </div>
+
+                 <div class = "col-12 col-lg-7">
+
+                     <div class = "product-desc-header">
+
+                         <span>Opis produktu</span>
+
+                     </div>
+
+                     <p> <%=  product.description          %> </p>
+                     <p> <%=  product.descriptionExtended  %> </p>
+                    
+
+                     <div class = "add-to-cart"> 
+ 
+                        
+
+                                 <% if(isAuthenticated) { %>
+
+                                     <form action="/koszyk" method="post">
+
+                                        <input type="hidden" name="productId" value="<%= product._id %>">
+                                        <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                                         <button class = "cart" type="submit">
+                                             Dodaj do koszyka
+                                         </button>
+                                     </form> 
+
+                                 <% } else { %>
+
+                                     <form action="/koszyk" method="post">
+
+                                        <input type="hidden" name="productId" value="<%= product._id %>">
+                                        <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                                         <button class = "cart" type="submit">
+                                             Zaloguj się aby dodać do koszyka
+                                         </button>
+        
+                                     </form> 
+
+                                     <form action = "/dane-zamowienia" method = "POST">
+                                         <input type="hidden" name="productId" value="<%= product._id %>">
+                                         <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+                                         <button class = "add-to-cart btn-order" type = "submit"> <span class = "log-to-cart">Zamów bez logowania!</span> </button>
+                                     </form>
+
+                                 <% } %>
+
+  
+
+                         </form>
+                     </div>
+
+                 </div>     
+
+             </div>
+         </div>
+     </main>
+
+
+<%- include("../includes/footer") %>
+

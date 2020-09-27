@@ -1,0 +1,109 @@
+body{
+    margin:0;
+    padding:0;
+}
+
+.container{
+     margin-top:15vh;
+     margin-bottom:10vh;
+     padding:0;
+     
+}
+
+.col-user{
+    float:left;
+}
+
+
+.col-10{
+    margin:0 auto;
+    background-color:#f0f4f4;
+    -webkit-box-shadow: 4px 3px 10px -1px rgba(0,0,0,0.65);
+    -moz-box-shadow: 4px 3px 10px -1px rgba(0,0,0,0.65);
+    box-shadow: 4px 3px 10px -1px rgba(0,0,0,0.65);
+    padding:3vh 3vw;
+}
+
+.header{
+     display:block;
+     text-align:center;
+     font-size:1.2em;
+     margin:3vh 0;
+     border-bottom:1px solid #d9d9d9;
+     padding-bottom:1vh;
+}
+
+.no-orders{
+     font-size:1.2em;
+     display:block;
+     margin-top:10vh;
+}
+
+.orders-container{
+     margin-bottom:2vh;
+}
+
+.order-products{
+     display:block;
+     font-size:1.05rem;
+}
+
+.admin{
+     display:block;
+     text-align:center;
+     margin-bottom:5vh;
+}
+
+.ship-product{
+     display:block;
+}
+
+.ship-header{
+     text-align:center;
+     display:block;
+     font-size:1.07em;
+     margin-bottom:2vh;
+     padding-bottom:1vh;
+     border-bottom:1px solid #d9d9d9
+}
+
+.login-input{
+     width:90%;
+     display:block;
+     margin-top:1.5vh;
+     min-height:4vh;
+     padding-left:2vw;
+     letter-spacing:1px;
+     padding-top:0.5vh;
+     padding-bottom:0.5vh;
+}
+
+.submit{
+     background:linear-gradient(#fe4a49,#fe3434);
+     border:none;
+     color:white;
+     padding:1vh 1vw;
+     width:50%;
+}
+
+.submit-container{
+      text-align:center;
+      margin-top:5vh;
+}
+
+.payment-methods{
+     width:90%;
+     min-height:5vh;
+}
+
+.payment-methods-label{
+     margin-top:1.5vh;
+     font-size:1.15rem;
+}
+
+.errors{
+     font-size:1.15rem;
+     margin:2.5vh 0;
+     color:red;
+     text-align:center;
+}

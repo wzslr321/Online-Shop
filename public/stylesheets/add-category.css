@@ -1,0 +1,53 @@
+.container{
+    margin-top:10vh;
+}
+
+.add-category-form:first-of-type{
+
+     margin-bottom:5vh;
+}
+
+label:first-of-type{
+    margin-top:5vh;
+}
+
+label{
+     font-size:1.1em;
+     letter-spacing:1.5px;
+     padding-bottom:1vh;
+}
+
+.cat-input{
+    width:15vw;
+    height:5vh;
+    padding-left:1vw;
+    letter-spacing:2px;
+}
+
+.btn{
+    border:1px solid black;
+    background-color:#f9f9f9;
+    margin-left:2vw;
+}
+
+.col-12{
+    text-align:center;
+}
+
+.hrefs-bottom{
+     margin-bottom:5vh;
+     border-top:1px solid black;
+     border-bottom:none !important;
+}
+
+.form-2{
+    margin-top:2vh;
+}
+
+.fcontainer-2{
+    margin-bottom:15vh;
+}
+
+.admin-hrefs-category{
+    margin-top:0 !important;
+}

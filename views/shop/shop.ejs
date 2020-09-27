@@ -1,0 +1,154 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/shop.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+</head>
+
+<body>
+    <main>
+
+<%- include("../includes/navbar") %>
+
+        <div class = "categories-navbar cat-nav-shop">
+
+            <span class = "navbar-categories-header">
+                
+                 <% if(subCategories === undefined)  { %>
+
+                     Kategorie produktów : 
+
+                 <% } else { %>
+
+                     <% if(subCategories !== undefined ) { %>
+
+                         Podkategorie produktów :
+
+                     <% } else {  %>
+                      
+
+                     <% } %>   
+
+                 <% } %>
+                    
+            </span>
+
+
+         <% if(subCategories === undefined)  { %>  
+
+             <% for(let i = 0; i < categories.length; i++) { %>
+
+                 <a class = "categories-href" href = "/sklep/kategorie/<%= categories[i].name %>"> <span class = "navbar-categories-span"> <%= categories[i].name %> </span>  </a>
+
+             <%  } %>  
+
+         <% } else { %>
+
+
+            <% for(let i = 0; i < products.length; i++) { %>
+
+                 <a class = "categories-href" href = "/sklep/pod-kategorie/<%= products[i].subCategory %>"> <li class = "navbar-categories-span"> <%= products[i].subCategory %> </li>  </a>
+
+            <%  } %>  
+
+         <% } %>
+
+        </div>   
+       
+        
+        <div>
+
+            <% if(noMatch !== null) { %>
+
+                 <h3> <%= noMatch %> </h3>
+
+            <% } %>
+
+        </div>
+
+
+         <% if (products.length > 0) { %>
+
+             <div class = "container">
+                 <div class = "row">
+
+                     <% for (let product of products) { %>
+
+                         <div class = "col-lg-12 col-xl-6 product-div">
+
+                         <article>
+
+                             <div>
+
+                                 <img class="img-fluid shop-image" src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+
+                             </div>
+
+                             <div class = "product-title-div"> 
+
+                                 <h3 name = "productTitle" value = "<%=product.title%>" class="product__title"> <%= product.title %> </h3>
+
+                             </div>
+
+                             <div class = "product-price">
+                                 <h4 class="product__price"><%= product.price %> ,-</h4>
+                             </div>
+
+                             <div class = "product-description"> 
+                                 <p class="product__description"><%= product.description %></p>
+
+                                 <div class = "test"> 
+
+                                 <a class = "go-details" href="/sklep/<%= product._id %>"> Wyświetl Szczegóły </br></a>
+
+                                 <% if(isAuthenticated) { %>
+                                
+                                     <div class = "cart-div">
+
+                                         <form action="/koszyk" method="post">
+
+                                             <button class ="add-to-cart" type="submit">Dodaj do koszyka!</button>
+                                             <input type="hidden" name="productId" value="<%= product._id %>">
+                                             <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+
+                                         </form>
+
+                                     </div>  
+
+                                 <% } else { %>
+
+                                     <form action = "/dane-zamowienia" method = "POST">
+                                        <input type="hidden" name="productId" value="<%= product._id %>">
+                                        <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+                                        <button class = "add-to-cart btn-order" type = "submit"> <span class = "log-to-cart">Zamów bez logowania!</span> </button>
+                                        <a href = "logowanie" class = "log-to-cart"> <span class = "log-to-cart">Zaloguj się aby dodać do koszyka!</span> </a>
+                                     </form>
+                                    
+
+                                 <% } %>
+                                 </div>
+
+                         </div>
+
+
+                     </article>
+
+                    </div>
+
+                 <% } %>
+
+                </div>
+            </div>
+
+         <% } else { %>
+
+             <h1 class = "no-prods-h1"> Nie znaleziono żadnych produktów !</h1>
+
+         <% } %>
+
+    </main>
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+<script src = "https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script> 
+<script src = "/scripts/parallax.js"></script>
+
+<%- include("../includes/footer") %>

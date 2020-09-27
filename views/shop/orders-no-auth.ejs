@@ -1,0 +1,37 @@
+<%- include('../includes/head.ejs') %>
+
+     <link rel="stylesheet" href="/stylesheets/orders.css">
+
+ </head>
+
+<body>
+
+     <%- include("../includes/navbar") %>
+
+     <main class = "order-container">
+
+         <% if (orders !== undefined ) { %>
+
+             <% if(orders.length < 1) { %>
+
+                <h1>Brak zamówień </h1>
+
+             <% } else { %>
+
+                <div class = "orders-header">
+                     Twoje zamówienie!
+                </div>
+
+                <% for(let i = 0; i < orders.length; i++) { %>
+
+                        <h4>Numer zamówienia <i>  <%= orders[i]._id %> </i></h4>
+
+                <% } %>
+           
+        <% } %>
+
+         <% }  %>
+
+    </main>
+
+<%- include("../includes/footer-login") %>

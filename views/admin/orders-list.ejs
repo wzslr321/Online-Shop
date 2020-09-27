@@ -1,0 +1,186 @@
+  
+<%- include("../includes/head.ejs") %>
+
+<link rel = "stylesheet" href = "/stylesheets/admin.css">
+<link rel = "stylesheet"    href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+<Link rel = "stylesheet"    href = "/stylesheets/footer.css">
+
+
+</head>
+
+<%- include("../includes/navbar-admin.ejs") %>
+
+<div class = "orders-container">
+
+<% if(order !== undefined) { %>
+
+        <div class = "order-container"> 
+            <% for(let i = 0; i < order.length; i++) { %>
+
+
+                <div class = "order-id-container"> 
+                    <span class = "order-id"> Numer zamówienia : <%= order[i]._id %> </span>
+                    <% if(path !== "admin/zamowienia/id") { %> 
+                       <a class ="order-details" href = "/admin/zamowienia/<%=order[i]._id%>">Wyświetl szczegóły zamówienia</a>
+                    <% } %> 
+                </div>
+                <% if(path === "admin/zamowienia/id") { %>
+                <div class = "order-info-container"> 
+                    
+                    <span class = "order-info"> Imię :                  <b>  <%= user.firstName     %> </b> </span>
+                    <span class = "order-info"> Nazwisko :              <b>  <%= user.secondName  %> </b> </span>
+                    <% for(let i=0; i < user.shippingCart.length; i++ ) { %>
+                       <span class = "order-info"> Kraj :                  <b>  <%= user.shippingCart[i].country     %> </b> </span>
+                       <span class = "order-info"> Miasto :                <b>  <%= user.shippingCart[i].city        %> </b> </span>
+                       <span class = "order-info"> Kod pocztowy :          <b>  <%= user.shippingCart[i].zipCode     %> </b> </span>
+                       <span class = "order-info"> Ulica :                 <b>  <%= user.shippingCart[i].street      %> </b> </span>
+                       <span class = "order-info"> Numer domu/mieszkania :<b>   <%= user.shippingCart[i].houseNumber %> </b> </span>
+            
+               <% } %>
+                        <% for(let i = 0; i < products.length; i++ ) { %>
+                                <span class = "order-info-prod">Dane zamówionego produktu</span>
+                                <span class = "order-info"> Nazwa zamówionego produktu  : <b>  <%= products[i].product.title  %>  </b> </span>
+                                <span class = "order-info"> Cena  zamówionego produktu  : <b>  <%= products[i].product.price  %>  </b> </span>
+                                <span class = "order-info"> Ilość zamówionych produktów : <b>  <%= products[i].quantity       %>  </b> </span>
+                        <% } %>      
+                        
+                        <% for(let i=0; i < user.shippingCart.length; i++ ) { %>
+
+                            <span class = "order-info-ship">Sposób zamówienia: <b> <%= user.shippingCart[i].payment %> </b></span>
+                          <% } %>
+               
+               </div>
+
+              
+
+
+               <% } %>
+                        <% if(order[i].isRealised === false) { %>
+                           <form class = "order-check-form" action = "/admin/zamowienia" method = "POST">
+       
+                               <select class = "order-check" name = "checkbox">
+                                   <option value = "Zrealizowane">Zrealizowane</option>
+                               </select>
+       
+                            <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+                            <input name = "orderId" type = "hidden" value = "<%= order[i].id %>">
+                               
+                               <button class = "submit-check" type = "submit">Zatwierdź</button>
+                           </form>
+       
+                        <% } else { %>
+                                <div class ="order-register-container">
+                                    <span class = "order-register">Zamówienie zajerejstrowane</span> 
+                                </div>
+                          
+                        <% } %>
+                        <% if(order[i].isSent === false) { %>
+                            <form class = "order-check-form" action = "/admin/zamowienia/wysylka" method = "POST">
+                           
+                                <select class = "order-check" name = "checkbox">
+                                   <option value = "Wysłane">Wysłane</option>
+                                </selct>
+                           
+                            <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+                            <input name = "orderId" type = "hidden" value = "<%= order[i].id %>">
+                               
+                               <button class = "submit-check" type = "submit">Zatwierdź</button>
+                           </form>
+       
+                        <% } else { %>
+                                <div class ="order-register-container">
+                                    <span class = "order-register">Zamówienie wysłane</span> 
+                                </div>
+                          
+                        <%  } %>
+            <% } %>
+           
+        </div>
+<% } else {  %> 
+    
+<% } %>
+
+
+
+<% if(userNoAuth !== undefined) { %>
+   <div class = "order-container"> 
+       <% for(let i = 0; i < orderNoAuth.length; i++) { %>
+           <div class = "order-id-container"> 
+               <span class = "order-id"> Numer zamówienia : <%= orderNoAuth[i]._id %> </span>
+           </div>
+           <% if(path !== "admin/zamowienia/id") { %> 
+               <a class ="order-details" href = "/admin/zamowienia/<%=orderNoAuth[i]._id%>">Wyświetl szczegóły zamówienia</a>
+            <% } %> 
+           <% if(path === "admin/zamowienia/id") { %>
+           <div class = "order-info-container"> 
+                
+                      <span class = "order-info"> Imię :                  <b>  <%= userNoAuth.name        %> </b> </span>
+                      <span class = "order-info"> Nazwisko :              <b>  <%= userNoAuth.ndName      %> </b> </span>
+                      <span class = "order-info"> Kraj :                  <b>  <%= userNoAuth.country     %> </b> </span>
+                      <span class = "order-info"> Miasto :                <b>  <%= userNoAuth.city        %> </b> </span>
+                      <span class = "order-info"> Kod pocztowy :          <b>  <%= userNoAuth.zipCode     %> </b> </span>
+                      <span class = "order-info"> Ulica :                 <b>  <%= userNoAuth.street      %> </b> </span>
+                      <span class = "order-info"> Numer domu/mieszkania : <b>  <%= userNoAuth.houseNumber %> </b> </span>
+                     
+                      <span class = "order-info-prod">Dane zamówionego produktu</span>
+                      <span class = "order-info"> Nazwa zamówionego produktu  : <b>  <%= productsNoAuth.title  %>  </b> </span>
+                      <span class = "order-info"> Cena  zamówionego produktu  : <b>  <%= productsNoAuth.price  %>  </b> </span>
+                      <span class = "order-info"> Ilość zamówionych produktów : <b>  1  </b> </span>
+                      
+                      <span class ="order-info-ship">Sposób wysyłki : <b> Za pobraniem  </b> </span>
+                  </div>
+                  
+               <% } %>
+                  <% if(orderNoAuth[i].isRealised === false) { %>
+                      <form class = "order-check-form" action = "/admin/zamowienia" method = "POST">
+  
+                          <select class  = "order-check" name = "checkbox">
+                              <option value = "Zrealizowane">Zrealizowane</option>
+                          </select>
+  
+                       <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+                       <input name = "orderId" type = "hidden" value = "<%= orderNoAuth[i]._id %>">
+                       <input name = "orderNoAuth" type = "hidden" value ="true">
+                          
+                          <button class = "submit-check" type = "submit">Zatwierdź</button>
+                      </form>
+  
+                   <% } else { %>
+  
+                       <div class ="order-register-container">
+                           <span class = "order-register">Zamówienie zajerejstrowane</span> 
+                       </div>
+                   <% } %>
+                   
+                   
+                   <% if(orderNoAuth[i].isSent === false) { %>
+                       <form class = "order-check-form" action = "/admin/zamowienia/wysylka" method = "POST">
+                      
+                           <select class = "order-check" name = "checkbox">
+                              <option value = "Wysłane">Wysłane</option>
+                           </selct>
+                      
+                       <input name = "_csrf" type = "hidden" value="<%= csrfToken %>">
+                       <input name = "orderId" type = "hidden" value = "<%= orderNoAuth[i].id %>">
+                       <input name = "orderNoAuth" type = "hidden" value = "true" >
+                          
+                          <button class = "submit-check" type = "submit">Zatwierdź</button>
+                      </form>
+  
+                   <% } else { %>
+                           <div class ="order-register-container">
+                               <span class = "order-register">Zamówienie wysłane</span> 
+                           </div>
+                     
+                   <%  } %>
+       <% } %>
+        
+   </div>
+<% } else {  %> 
+
+<% } %>
+
+</div>
+
+<%- include("../includes/footer") %>

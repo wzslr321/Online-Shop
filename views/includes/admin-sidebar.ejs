@@ -1,0 +1,132 @@
+<div id = "sidebar" class = "sidebar">
+
+    <span class = "panel-header">
+        Panel admina
+    </span>
+    
+
+    <div class = "panel-option"> 
+        <% if(path ==="admin/produkty"){ %>
+             <span class = "panel-hrefs active"  id = "products">Wszystkie produkty</span>
+        <% } else {  %>    
+         <a  class = "panel-hrefs" id   = "products"  href = "/admin/produkty"> Wszystkie produkty</a>
+
+        <% } %>
+
+     <% if(path === "admin/produkty"){  %> 
+         <% for(let i = 0; i < category.length; i++) { %>
+
+             <ul>
+                <a class = "categories-href" href = "/admin/kategorie/<%= category[i].name %>"> 
+                     <li class = "category-li"> <%= category[i].name %> </li>
+                </a>
+             </ul>
+
+         <% } %>    
+     <% } %>   
+
+    </div>
+
+    <div class = "panel-option"> 
+       <a
+         <% if(path === "admin/dodaj-produkt") { %>  
+             class = "panel-hrefs active"
+         <% } else { %>
+             class = "panel-hrefs"
+         <% } %>
+        href = "/admin/dodaj-produkt"> Dodaj produkt</a>
+   </div>
+
+    <div class = "panel-option"> 
+        <a 
+         <% if(path === "admin/dodaj-kategorie") { %>  
+             class = "panel-hrefs active"
+         <% } else { %>
+             class = "panel-hrefs"
+         <% } %>
+       href = "/admin/dodaj-kategorie"> Dodaj kategorię </a>
+    </div>
+
+    <div class = "panel-option"> 
+        <a 
+        <% if(path === "admin/zamowienia" ) { %>  
+             class = "panel-hrefs active"
+         <% } else {  %>
+            class = "panel-hrefs"
+         <% } %>
+         href = "/admin/zamowienia"> Zamówienia
+        
+         <% if(orderNoAuth !== undefined) { %>
+
+            <% if(path === "admin/zamowienia"){  %>
+
+            <% let isRealised = [] %>
+            <% let orderFalse; %>
+
+        
+ 
+             <% for(let i = 0; i < orderNoAuth.length; i++){  %>
+
+                 <% isRealised.push(orderNoAuth[i].isRealised)  %>
+
+
+             <% } %>
+
+             <% for(let i = 0; i < isRealised.length; i++){ %>
+
+                    <% if(isRealised[i] === true){  %> 
+              
+                    <% } else {  %>
+
+                        <span class = "new-orders">!</span>
+
+                    <% } %>   
+
+             <% } %>
+
+                
+             <% } %>
+
+         <% } %>
+
+         <% if(order!== undefined) { %>
+
+            <% if(path === "admin/zamowienia"){  %>
+
+            <% let isRealised = [] %>
+            <% let orderFalse; %>
+
+        
+ 
+             <% for(let i = 0; i < order.length; i++){  %>
+
+                 <% isRealised.push(order[i].isRealised)  %>
+
+
+             <% } %>
+
+             <% for(let i = 0; i < isRealised.length; i++){ %>
+
+                    <% if(isRealised[i] === true){  %> 
+              
+                    <% } else {  %>
+
+                        <span class = "new-orders">!</span>
+
+                    <% } %>   
+
+             <% } %>
+
+                
+             <% } %>
+
+         <% } %>
+
+
+         </a>
+    </div>
+
+    
+
+</div>
+
