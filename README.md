@@ -8,15 +8,17 @@
 
 **How to setup locally** &#129047;
 
-> While in the main folder with app.js file, type **npm install** in the terminal.
+> While in the main folder with app.js file, type `npm install` in the terminal.
 
-> Afterwards, type **npm start**. And that is all!
+> Afterwards, type `npm start`. And that is all!
 
 #
 
  ##### PRESENTATION https://www.youtube.com/watch?v=5V5gACrVigc&feature=youtu.be
 
 #
+
+*I do apologize for Polish language, it will not happen again on this profile!*
 
 *Yeah, I know it is ugly as hell, but I am insanely bad in design.* 
 *It is first big project in my adventure with programming, so there is still a lot to improve for sure.* 
@@ -27,5 +29,7 @@
 > It is public and free repositorium if you want to learn from it, or use it to practise your skills
 
 > If you want to use it as yours commercial online-shop, first agree it with me.
+
+#
 
 #### Wiktor Zając 2020 ©️ All Rights Reserved
