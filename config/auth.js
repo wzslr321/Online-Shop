@@ -13,7 +13,7 @@ module.exports = {
 
 
          res.redirect("/logowanie")  
-         req.flash("errorMsg", " Nie posiadasz uprawnień do przeglądania tej strony")  
+         req.flash("errorMsg", " Nie posiadasz uprawnień do przeglądania tej strony!")  
             
     },
 
